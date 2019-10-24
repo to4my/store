@@ -9,6 +9,15 @@ class Product
   end
 
   def update(params)
+
+  # params.each do |key|
+  #   if key.nil?
+  #     @key = @hh[key]
+  #   else
+  #     @key = key
+  #   end
+  # end
+
     if params[:price].nil?
       @price = @hh[:price]
     else
@@ -26,9 +35,6 @@ class Product
     else
       @title = params[:title]
     end
-     # params[:price].nil? ? @hh[:price] : params[:price]
-     # params[:amount].nil? ? @hh[:amount] : params[:amount]
-     # params[:title].nil? ? @hh[:title] : params[:title]
 
   def to_s
 
