@@ -14,5 +14,5 @@ movie1.year = 2000
 puts movie1
 
 
-movie2.update(price: 100, title: "123")
+movie2.update(title: "123", director: "Tim Roth", amount: 23)
 puts movie2

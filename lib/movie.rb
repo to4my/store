@@ -1,3 +1,5 @@
+require_relative 'product'
+
 class Movie < Product
   attr_accessor :year, :director
 
@@ -8,7 +10,15 @@ class Movie < Product
     @director = params[:director]
   end
 
+  def update(params)
+    super
+
+    @initial.merge!(params)
+  end
+
   def to_s
-    "Фильм <<#{@title}>>, #{@year}, реж. #{@director}, #{@price} руб. (осталось #{@amount})"
+    "Фильм <<#{@initial[:title]}>>, #{@initial[:year]}, реж. #{@initial[:director]}," \
+      " #{@initial[:price]} руб. (осталось #{@initial[:amount]})"
+    # @initial.to_s
   end
 end
