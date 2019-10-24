@@ -9,36 +9,39 @@ class Product
   end
 
   def update(params)
+    product = [@price, @amount, @title]
 
-  # params.each do |key|
-  #   if key.nil?
-  #     @key = @hh[key]
-  #   else
-  #     @key = key
-  #   end
-  # end
-
-    if params[:price].nil?
-      @price = @hh[:price]
-    else
-      @price = params[:price]
+    params.each do |key|
+      product.each do |product|
+        if key.nil?
+          product = @hh[key]
+        else
+          product = key
+        end
+      end
     end
 
-    if params[:amount].nil?
-      @amount = @hh[:amount]
-    else
-      @amount = params[:amount]
+    # if params[:price].nil?
+    #   @price = @hh[:price]
+    # else
+    #   @price = params[:price]
+    # end
+    #
+    # if params[:amount].nil?
+    #   @amount = @hh[:amount]
+    # else
+    #   @amount = params[:amount]
+    # end
+    #
+    # if params[:title].nil?
+    #   @title = @hh[:title]
+    # else
+    #   @title = params[:title]
+    # end
+
+    def to_s
+
     end
-
-    if params[:title].nil?
-      @title = @hh[:title]
-    else
-      @title = params[:title]
-    end
-
-  def to_s
-
   end
-  end
-  end
+end
 
