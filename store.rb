@@ -12,8 +12,11 @@ require_relative 'lib/product_collection'
 # puts book
 #
 #
+collection_film = Film.from_file
+puts collection_film
+collection_book = Book.from_file
+puts collection_book[3]
 # puts Film.from_file
-# puts Book.from_file
 
-
-puts ProductCollection.from_dir.to_a
+# collection_film = ProductCollection.from_dir
+# puts collection_film.to_a
