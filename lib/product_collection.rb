@@ -1,15 +1,23 @@
-require_relative 'film'
-require_relative 'book'
+class ProductCollection < Product
 
-class ProductCollection
+  def initialize
+
+  end
 
   def self.from_dir
-    @collection = []
-    @collection = Film.from_file + Book.from_file
+    Dir["#{__dir__}/../data/**/*.txt"].map do |file_name|
+      lines = File.readlines(file_name, encoding: "utf-8", chomp: true)
+      if file_name.include?("book")
+        Book.new(title: lines[0], genre: lines[1], autor: lines[2], price: lines[3].to_i, amount: lines[4].to_i)
+      elsif file_name.include?("film")
+        Film.new(title: lines[0], director: lines[1], year: lines[2].to_i, price: lines[3].to_i, amount: lines[4].to_i)
+      elsif file_name.include?("disk")
+        Disk.new(title: lines[0], artist: lines[1], genre: lines[2], year: lines[3].to_i, price: lines[4].to_i, amount: lines[5].to_i)end
+    end
   end
 
   def to_a
-     "#{@collection[0]} --"
+    puts "#{@title}--#{@collection}--#{@collection}--#{@collection}--#{@collection}"
   end
 
   def sort
