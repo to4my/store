@@ -21,4 +21,3 @@ class Product
 
   end
 end
-

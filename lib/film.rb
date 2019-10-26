@@ -26,8 +26,4 @@ class Film < Product
     "Фильм <<#{@title}>>, #{@year}, реж. #{@director}," \
       " #{@price} руб. (осталось #{@amount})"
     end
-  # def to_s
-  #   "Фильм <<#{@initial[:title]}>>, #{@initial[:year]}, реж. #{@initial[:director]}," \
-  #     " #{@initial[:price]} руб. (осталось #{@initial[:amount]})"
-  # end
 end

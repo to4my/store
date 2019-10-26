@@ -3,18 +3,12 @@ require_relative 'lib/film'
 require_relative 'lib/book'
 require_relative 'lib/product_collection'
 require_relative 'lib/disk'
-#
-# 1. Фильм «Леон», 1994, реж. Люк Бессон, 990 руб. (осталось 5)
-# 2. Книга «Идиот», роман, автор — Федор Достоевский, 1500 руб. (осталось 10)
-# 3. Книга «Санькя», роман, автор — Захар Прилепин, 1000 руб. (осталось 3)
-# 4. Альбом Judas Priest — «Painkiller», Heavy Metal, 1990, 990 руб. (осталось 3)
-# 0. Выход
 
 collection = ProductCollection.from_dir
 
 user_answer = -1
 total = 0
-# puts collection.count
+
 while (user_answer != 0)  do
   puts "Что Вы хотите купить:"
   puts
@@ -34,5 +28,4 @@ while (user_answer != 0)  do
   puts
   puts "Всего товаров на сумму: #{total} руб."
   puts
-
 end

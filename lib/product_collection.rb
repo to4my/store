@@ -17,7 +17,7 @@ class ProductCollection < Product
   end
 
   def to_a
-    puts "#{@title}--#{@collection}--#{@collection}--#{@collection}--#{@collection}"
+
   end
 
   def sort
