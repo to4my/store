@@ -4,6 +4,7 @@ class Disk < Product
   def initialize(params)
     super
 
+<<<<<<< HEAD
     @artist = params[:artist]
     @genre = params[:genre]
     @year = params[:year]
@@ -33,4 +34,23 @@ class Disk < Product
     "Альбом #{@artist} - «#{@title}», #{@genre}, #{@year}, #{super}"
   end
 
+=======
+    self.artist =  params[:artist]
+    self.genre =  params[:genre]
+    self.year =  params[:year]
+  end
+
+  def update(params)
+    super
+
+    self.genre = params[:genre] if params[:genre]
+    self.artist = params[:artist] if params[:artist]
+    self.year = params[:year] if params[:year]
+  end
+
+  def to_s
+    "Альбом #{@title} - <<#{@artist}>>, #{@genre}, #{@year}, " \
+      "#{@price} руб. (осталось #{@amount})"
+  end
+>>>>>>> 7f81038b3d76471558c0267d2ade48d8bfb821ee
 end
