@@ -1,5 +1,3 @@
-require_relative 'product'
-
 class Film < Product
   attr_accessor :year, :director
 
@@ -13,18 +11,22 @@ class Film < Product
   def update(params)
     super
 
-    @initial.merge!(params)
+    @director = params[:director] if params[:director]
+    @year = params[:year] if params[:year]
   end
 
-  def self.from_file
-    Dir["#{__dir__}/../data/films/*.txt"].map do |file_name|
-      lines = File.readlines(file_name, encoding: "utf-8", chomp: true)
-      Film.new(title: lines[0], director: lines[1], year: lines[2].to_i, price: lines[3].to_i, amount: lines[4].to_i)
-    end
+  def self.from_file(file_path)
+    lines = File.readlines(file_path, encoding: "utf-8", chomp: true)
+    new(
+      title: lines[0],
+      director: lines[1],
+      year: lines[2].to_i,
+      price: lines[3].to_i,
+      amount: lines[4].to_i
+    )
   end
 
   def to_s
-    "Фильм <<#{@initial[:title]}>>, #{@initial[:year]}, реж. #{@initial[:director]}," \
-      " #{@initial[:price]} руб. (осталось #{@initial[:amount]})"
+    "Фильм <<#{title}>>, #{year}, реж. #{director}, #{super}"
   end
 end

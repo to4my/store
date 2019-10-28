@@ -1,30 +1,33 @@
-require_relative 'product'
-
 class Book < Product
-  attr_accessor :genre, :autor
+  attr_accessor :genre, :author
 
   def initialize(params)
     super
 
-    @year = params[:genre]
-    @autor = params[:autor]
+    @genre = params[:genre]
+    @author = params[:author]
   end
 
   def update(params)
     super
 
-    @initial.merge!(params)
+    @genre = params[:genre] if params[:genre]
+    @author = params[:author] if params[:author]
   end
 
-  def self.from_file
-    films = Dir["#{__dir__}/../data/books/*.txt"].map do |file_name|
-      lines = File.readlines(file_name, encoding: "utf-8", chomp: true )
-      Book.new(title: lines[0], genre: lines[1], autor: lines[2], price: lines[3].to_i, amount: lines[4].to_i)
-    end
+  def self.from_file(file_path)
+    lines = File.readlines(file_path, encoding: 'UTF-8', chomp: true)
+
+    new(
+      title: lines[0],
+      genre: lines[1],
+      author: lines[2],
+      price: lines[3].to_i,
+      amount: lines[4].to_i
+    )
   end
 
   def to_s
-    "Книга <<#{@initial[:title]}>>, #{@initial[:genre]}, автор - #{@initial[:autor]}, " \
-      "#{@initial[:price]} руб. (осталось #{@initial[:amount]})"
+    "Книга <<#{title}>>, #{genre}, автор - #{author}, #{super}"
   end
 end
